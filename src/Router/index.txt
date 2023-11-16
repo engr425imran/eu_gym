@@ -1,0 +1,38 @@
+import {View, Text} from 'react-native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Iconn from 'react-native-vector-icons/FontAwesome5';
+
+import Home from '../auth/Home';
+import TodayWorkout from '../auth/Main/TodayWorkout';
+import User from '../auth/Profile/User';
+
+const Tab = createBottomTabNavigator();
+
+export default function Index() {
+  return (
+    <NavigationContainer>
+      {/* <Tab.Navigator screenOptions={{headerShown: false}}> */}
+      <Tab.Navigator screenOptions={{headerShown: false}}>
+        <Tab.Screen name="Home" component={Home} 
+        
+        options={{
+            tabBarLabel: 'Home',
+            tabBarActiveTintColor: '#0171A1',
+            tabBarLabelStyle: {fontFamily: 'Inter-Regular', fontSize: 11},
+            tabBarInactiveTintColor: '#6D858F',
+            headerShown: false,
+            tabBarIcon: () => (
+              <View style={{position: 'relative'}}>
+                {currentTabActive == 'Today' ? <TruckActive /> : <TruckIcon />}
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen name="Today" component={TodayWorkout} />
+        <Tab.Screen name="User" component={User} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
