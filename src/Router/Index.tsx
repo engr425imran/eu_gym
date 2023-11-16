@@ -12,7 +12,7 @@ import EditProfile from '../auth/Settings/EditProfile';
 import Account from '../auth/Settings/Account';
 import Language from '../auth/Settings/Language';
 import Values from '../auth/Settings/Values';
-import TodayWorkout from '../auth/Main/TodayWorkout';
+import AddExercise from '../auth/Workouts/AddExercise';
 import User from '../auth/Profile/User';
 
 const Stack = createNativeStackNavigator();
@@ -44,6 +44,7 @@ export default function Index() {
           <Stack.Screen name="Language" component={Language} />
           <Stack.Screen name="Account" component={Account} />
           <Stack.Screen name="Values" component={Values} />
+          <Stack.Screen name="AddExercise" component={AddExercise} />
         </Stack.Group>
 
         <Stack.Screen name="EditProfile" component={EditProfile} />

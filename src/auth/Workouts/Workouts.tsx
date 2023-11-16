@@ -2,14 +2,16 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function TodayWorkout() {
+export default function TodayWorkout({navigation}) {
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Text style={styles.heading}>Your Workouts</Text>
         <View style={{flexDirection: 'row'}}>
           <Icon name="restart" size={30} color="#fff" />
-          <Icon name="plus-circle-outline" size={30} color="#fff" />
+          <TouchableOpacity onPress={() => navigation.navigate('AddExercise')}>
+            <Icon name="plus-circle-outline" size={30} color="#fff" />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={{marginTop: 40}}>
