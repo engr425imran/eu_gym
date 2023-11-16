@@ -1,76 +1,83 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import IconM from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Home from '../auth/Home';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import HomeRoute from './HomeRoute';
+import Settings from '../auth/Settings/Settings';
+import Notifications from '../auth/Settings/Notifications';
+import EditProfile from '../auth/Settings/EditProfile';
+import Account from '../auth/Settings/Account';
+import Language from '../auth/Settings/Language';
+import Values from '../auth/Settings/Values';
 import TodayWorkout from '../auth/Main/TodayWorkout';
 import User from '../auth/Profile/User';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function Index() {
   return (
     <NavigationContainer>
-      {/* <Tab.Navigator screenOptions={{headerShown: false}}> */}
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarBackground: () => (
-            <View style={{backgroundColor: 'black', flex: 1}} />
-          ),
-        }}>
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarActiveTintColor: '#0171A1',
-            tabBarLabelStyle: {fontSize: 11},
-            tabBarInactiveTintColor: '#6D858F',
-            headerShown: false,
-            tabBarIcon: () => (
-              <View style={{position: 'relative'}}>
-                <IconM name="home" size={26} color="#fff" />
-              </View>
-            ),
-          }}
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="HomeRoute"
+          component={HomeRoute}
         />
-        <Tab.Screen
-          name="Today"
-          component={TodayWorkout}
-          options={{
-            tabBarLabel: 'Your Workouts',
-            tabBarActiveTintColor: '#0171A1',
-            tabBarLabelStyle: {fontSize: 11},
-            tabBarInactiveTintColor: '#6D858F',
-            headerShown: false,
-            tabBarIcon: () => (
-              <View style={{position: 'relative'}}>
-                <Icon name="dumbbell" size={26} color="#fff" />
-              </View>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="User"
-          component={User}
-          options={{
-            tabBarLabel: 'Your Metrics',
-            tabBarActiveTintColor: '#0171A1',
-            tabBarLabelStyle: {fontSize: 11},
-            tabBarInactiveTintColor: '#6D858F',
-            headerShown: false,
-            tabBarIcon: () => (
-              <View style={{position: 'relative'}}>
-                <IconM name="chart-bar" size={26} color="#fff" />
-              </View>
-            ),
-          }}
-        />
-      </Tab.Navigator>
+
+        <Stack.Group
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 25,
+            },
+            headerBackTitle: '',
+          }}>
+          <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="Notifications" component={Notifications} />
+          <Stack.Screen name="Language" component={Language} />
+          <Stack.Screen name="Account" component={Account} />
+          <Stack.Screen name="Values" component={Values} />
+        </Stack.Group>
+
+        <Stack.Screen name="EditProfile" component={EditProfile} />
+      </Stack.Navigator>
     </NavigationContainer>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen name="HomeRoute" component={HomeRoute} />
+    //     <Stack.Group
+    //       screenOptions={{
+    //         headerLeft: () => (
+    //           <TouchableOpacity onPress={() => console.log(navigation)}>
+    //             <Icon name="chevron-left" size={30} color="#fff" />
+    //           </TouchableOpacity>
+    //         ),
+    //         headerStyle: {
+    //           backgroundColor: 'black',
+    //         },
+    //         headerTintColor: '#fff',
+    //         headerTitleStyle: {
+    //           fontWeight: 'bold',
+    //           fontSize: 25,
+    //         },
+    //       }}>
+    //       <Stack.Screen name="Settings" component={Settings} />
+    //       <Stack.Screen name="Notifications" component={Notifications} />
+    //       <Stack.Screen name="Language" component={Language} />
+    //       <Stack.Screen name="Account" component={Account} />
+    //       <Stack.Screen name="Values" component={Values} />
+    //     </Stack.Group>
+    //     <Stack.Screen name="EditProfile" component={EditProfile} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 }
+
+// screenOptions={{headerShown: false}}

@@ -1,8 +1,9 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/EvilIcons';
+import Settings from '../auth/Settings/Settings';
 
-export default function Home() {
+export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -10,7 +11,7 @@ export default function Home() {
           <Text style={styles.heading}>Good Morning!</Text>
         </View>
         <View style={{marginRight: 20, marginTop: 10}}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
             <Icon name="gear" size={26} color="#fff" />
           </TouchableOpacity>
         </View>
