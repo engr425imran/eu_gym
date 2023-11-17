@@ -8,58 +8,64 @@ import {
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function AddExercise() {
+export default function AddExercise({navigation}) {
   return (
     <View style={styles.container}>
       <View style={{padding: 20}}>
         <View
           style={{
-            backgroundColor: 'green',
+            backgroundColor: '#E4E4DF',
             padding: 8,
             width: '100%',
             alignSelf: 'center',
             borderRadius: 6,
             flexDirection: 'row',
           }}>
-          <Icon name="search" size={30} color="#fff" />
-          <TextInput placeholder="Search" style={{marginLeft: 20}} />
+          <Icon name="search" size={30} color="black" />
+          <TextInput
+            placeholder="Search"
+            placeholderTextColor={'black'}
+            style={{marginLeft: 20}}
+          />
         </View>
         <View style={styles.list}>
-          <View style={styles.item}>
-            <View style={styles.avatar}></View>
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => navigation.navigate('EditExercise')}>
+            <View style={styles.avatar} />
             <View style={{marginLeft: 10}}>
               <Text style={styles.heading}>*Name of the exercise</Text>
               <Text style={styles.descp}>*Muscular group *Category</Text>
             </View>
-          </View>
-          <View style={styles.item}>
-            <View style={styles.avatar}></View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
+            <View style={styles.avatar} />
             <View style={{marginLeft: 10}}>
               <Text style={styles.heading}>*Name of the exercise</Text>
               <Text style={styles.descp}>*Muscular group *Category</Text>
             </View>
-          </View>
-          <View style={styles.item}>
-            <View style={styles.avatar}></View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
+            <View style={styles.avatar} />
             <View style={{marginLeft: 10}}>
               <Text style={styles.heading}>*Name of the exercise</Text>
               <Text style={styles.descp}>*Muscular group *Category</Text>
             </View>
-          </View>
-          <View style={styles.item}>
-            <View style={styles.avatar}></View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
+            <View style={styles.avatar} />
             <View style={{marginLeft: 10}}>
               <Text style={styles.heading}>*Name of the exercise</Text>
               <Text style={styles.descp}>*Muscular group *Category</Text>
             </View>
-          </View>
-          <View style={styles.item}>
-            <View style={styles.avatar}></View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
+            <View style={styles.avatar} />
             <View style={{marginLeft: 10}}>
               <Text style={styles.heading}>*Name of the exercise</Text>
               <Text style={styles.descp}>*Muscular group *Category</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

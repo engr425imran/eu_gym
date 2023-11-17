@@ -8,7 +8,9 @@ export default function TodayWorkout({navigation}) {
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Text style={styles.heading}>Your Workouts</Text>
         <View style={{flexDirection: 'row'}}>
-          <Icon name="restart" size={30} color="#fff" />
+          <TouchableOpacity onPress={() => navigation.navigate('Historical')}>
+            <Icon name="restart" size={30} color="#fff" />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('AddExercise')}>
             <Icon name="plus-circle-outline" size={30} color="#fff" />
           </TouchableOpacity>
