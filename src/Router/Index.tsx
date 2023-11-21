@@ -14,7 +14,7 @@ import Language from '../auth/Settings/Language';
 import Values from '../auth/Settings/Values';
 import AddExercise from '../auth/Workouts/AddExercise';
 import EditExercise from '../auth/Workouts/EditExercise';
-import User from '../auth/Profile/User';
+import User from '../auth/Metrics/UserMetrics';
 import WorkoutSummary from '../auth/Workouts/WorkoutSummary';
 import Historical from '../auth/Workouts/Historical';
 import StartWorkout from '../auth/Workouts/StartWorkout';

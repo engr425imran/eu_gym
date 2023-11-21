@@ -7,7 +7,7 @@ import IconM from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Home from '../auth/Home';
 import Workouts from '../auth/Workouts/Workouts';
-import User from '../auth/Profile/User';
+import User from '../auth/Metrics/UserMetrics';
 
 const Tab = createBottomTabNavigator();
 

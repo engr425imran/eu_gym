@@ -5,7 +5,10 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import BottomSheetComp from './BottomSheet';
-export default function TodayWorkout({navigation}) {
+interface WorkoutProps {
+  navigation: any;
+}
+export default function TodayWorkout({navigation}: WorkoutProps) {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const showSheet = () => {

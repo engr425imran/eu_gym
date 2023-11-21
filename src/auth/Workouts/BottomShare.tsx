@@ -5,27 +5,27 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
-  Modal,
+  Image,
   Pressable,
   TextInput,
 } from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import IconM from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-interface SheetProps {
+interface AppProps {
   bottomSheetRef: any;
   navigation: any; // Replace 'any' with the specific type for navigation
 }
 
-const App = ({bottomSheetRef, navigation}: SheetProps) => {
+// const App = ({bottomSheetRef, navigation}: AppProps) => {
+const App = ({bottomSheetRef, navigation}: AppProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [listName, SetListName] = useState('');
 
   //   const bottomSheetRef = useRef<BottomSheet>(null);
 
   // variables
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const snapPoints = useMemo(() => ['25%', '60%'], []);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -49,66 +49,53 @@ const App = ({bottomSheetRef, navigation}: SheetProps) => {
 
   return (
     <>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.main}>
-            <TouchableOpacity
-              style={{alignSelf: 'flex-end'}}
-              onPress={() => setModalVisible(false)}>
-              <IconM name="close" size={26} color="#D9DAD4" />
-            </TouchableOpacity>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Name of the list</Text>
-              {/* <TextInput style={styles.input} /> */}
-              <TextInput
-                style={styles.input}
-                onChangeText={SetListName}
-                value={listName}
-              />
-              <TouchableOpacity style={styles.createBtn}>
-                <Text style={styles.createBtnTxt}>Create</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
       <BottomSheet
         enablePanDownToClose={true}
         ref={bottomSheetRef}
         index={-1}
         snapPoints={snapPoints}
         handleIndicatorStyle={{backgroundColor: '#D5D5D5', width: 100}}
-        backgroundStyle={{backgroundColor: '#161818'}}
+        backgroundStyle={{backgroundColor: '#ECECE7'}}
         onChange={handleSheetChanges}>
         <View style={styles.contentContainer}>
+          <View
+            style={{
+              borderTopColor: '#DEDDD8',
+              borderTopWidth: 1,
+              padding: 10,
+              flexDirection: 'row',
+              alignItems: 'center',
+              borderBottomColor: '#DEDDD8',
+              borderBottomWidth: 1,
+            }}>
+            <Image
+              source={require('../../assets/avatar.png')}
+              style={{height: 80, width: 80, borderRadius: 40}}
+            />
+            <Image
+              source={require('../../assets/avatar1.png')}
+              style={{marginLeft: 20, height: 80, width: 80, borderRadius: 40}}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              marginTop: 20,
+            }}>
+            <Icon name="monitor-share" size={40} color="#44639E" />
+            <Icon name="message" size={40} color="#58B257" />
+            <Icon name="mail" size={40} color="#4EBBDF" />
+            <Icon name="card-text-outline" size={40} color="#F2C95D" />
+          </View>
           <View>
-            <TouchableOpacity style={styles.btn} onPress={navigateToAddExecise}>
-              <Icon name="dumbbell" size={26} color="grey" />
-              <View style={{marginLeft: 15}}>
-                <Text style={styles.btnTxt}>Workout</Text>
-                <Text style={styles.descp}>Create a new workout</Text>
-              </View>
+            <TouchableOpacity style={styles.btnBottom}>
+              <Text style={styles.btnBottomTxt}>Copiar foto</Text>
+              <Icon name="content-copy" size={30} color="#6A6A6A" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btn} onPress={createTwoButtonAlert}>
-              <IconM name="playlist-plus" size={36} color="grey" />
-              <View style={{marginLeft: 15}}>
-                <Text style={styles.btnTxt}>List</Text>
-                <Text style={styles.descp}>add a list to save</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btn}>
-              <IconM name="dumbbell" size={34} color="grey" />
-              <View style={{marginLeft: 15}}>
-                <Text style={styles.btnTxt}>Start Working out</Text>
-                <Text style={styles.descp}>Start a new workout right now</Text>
-              </View>
+            <TouchableOpacity style={styles.btnBottom}>
+              <Text style={styles.btnBottomTxt}>Some Text</Text>
+              <Icon name="share" size={30} color="#6A6A6A" />
             </TouchableOpacity>
           </View>
         </View>
@@ -121,7 +108,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: 'grey',
+    backgroundColor: '#ECECE7',
   },
   contentContainer: {
     flex: 1,
@@ -149,19 +136,21 @@ const styles = StyleSheet.create({
     marginTop: 22,
     // backgroundColor: '#161818',
   },
-  modalView: {
-    // borderRadius: 20,
-    // padding: 35,
-    //     alignItems: 'center',
-    //     shadowColor: '#000',
-    //     shadowOffset: {
-    //       width: 0,
-    //       height: 2,
-    //     },
-    //     shadowOpacity: 0.25,
-    //     shadowRadius: 4,
-    //     elevation: 5,
+  btnBottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 20,
   },
+  btnBottomTxt: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#606362',
+  },
+  modalView: {},
   main: {
     backgroundColor: '#161818',
     borderRadius: 10,
