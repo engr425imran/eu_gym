@@ -17,6 +17,7 @@ import EditExercise from '../auth/Workouts/EditExercise';
 import User from '../auth/Profile/User';
 import WorkoutSummary from '../auth/Workouts/WorkoutSummary';
 import Historical from '../auth/Workouts/Historical';
+import StartWorkout from '../auth/Workouts/StartWorkout';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ export default function Index() {
           <Stack.Screen name="EditExercise" component={EditExercise} />
           <Stack.Screen name="Historical" component={Historical} />
           <Stack.Screen name="WorkoutSummary" component={WorkoutSummary} />
+          <Stack.Screen name="StartWorkout" component={StartWorkout} />
         </Stack.Group>
 
         <Stack.Screen name="EditProfile" component={EditProfile} />

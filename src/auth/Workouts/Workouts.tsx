@@ -1,8 +1,17 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
+import BottomSheet from '@gorhom/bottom-sheet';
+
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import BottomSheetComp from './BottomSheet';
 export default function TodayWorkout({navigation}) {
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
+  const showSheet = () => {
+    bottomSheetRef.current?.expand();
+  };
+
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -11,7 +20,7 @@ export default function TodayWorkout({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate('Historical')}>
             <Icon name="restart" size={30} color="#fff" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('AddExercise')}>
+          <TouchableOpacity onPress={showSheet}>
             <Icon name="plus-circle-outline" size={30} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -41,7 +50,7 @@ export default function TodayWorkout({navigation}) {
             <Text style={styles.subHeading}>*Name of the list</Text>
             <Text style={styles.descpTxt}>*Name of the list</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('BottomSheet')}>
             <Icon name="dots-horizontal" size={30} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -56,6 +65,10 @@ export default function TodayWorkout({navigation}) {
         </View>
       </View>
       <Text>Today Workout</Text>
+      <BottomSheetComp
+        bottomSheetRef={bottomSheetRef}
+        navigation={navigation}
+      />
     </View>
   );
 }
